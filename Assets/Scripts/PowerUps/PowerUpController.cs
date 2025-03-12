@@ -46,5 +46,5 @@ namespace CosmicCuration.PowerUps
         }
 
         public virtual void Deactivate() => isActive = false;
-    } 
+    }
 }

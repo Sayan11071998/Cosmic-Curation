@@ -1,6 +1,5 @@
 #region Namespaces
 using UnityEngine;
-using TMPro;
 using CosmicCuration.Audio;
 using CosmicCuration.Enemy;
 using CosmicCuration.Bullets;
@@ -8,7 +7,7 @@ using CosmicCuration.VFX;
 using CosmicCuration.Player;
 using CosmicCuration.UI;
 using CosmicCuration.Utilities;
-using CosmicCuration.PowerUps; 
+using CosmicCuration.PowerUps;
 #endregion
 
 
@@ -47,7 +46,6 @@ public class GameService : GenericMonoSingleton<GameService>
 
     private void Start()
     {
-        // Initialize all Services.
         soundService = new SoundService(soundScriptableObject, audioEffectSource, backgroundMusicSource);
         playerService = new PlayerService(playerPrefab, playerScriptableObject, playerBulletPrefab, playerBulletScriptableObject);
         powerUpService = new PowerUpService(powerUpScriptableObject);
@@ -63,16 +61,10 @@ public class GameService : GenericMonoSingleton<GameService>
 
     #region Getters
     public PlayerService GetPlayerService() => playerService;
-
     public EnemyService GetEnemyService() => enemyService;
-
     public PowerUpService GetPowerUpService() => powerUpService;
-
     public VFXService GetVFXService() => vfxService;
-
     public SoundService GetSoundService() => soundService;
-
-    public UIView GetUIService() => uiService; 
+    public UIView GetUIService() => uiService;
     #endregion
-
 }

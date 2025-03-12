@@ -16,13 +16,12 @@ public class ScreenWrapperView : MonoBehaviour
     {
         if (!hasEnteredScreen)
             CheckIfEntered();
-        else if(RendererComponent.isVisible)
+        else if (RendererComponent.isVisible)
             WrapObjectOnScreen();
     }
 
     private void CheckIfEntered()
     {
-        // Check if the object has entered the Game Screen.
         Vector3 viewPointPosition = Camera.main.WorldToViewportPoint(transform.position);
         bool onScreen = viewPointPosition.x > 0 && viewPointPosition.x < 1 && viewPointPosition.y > 0 && viewPointPosition.y < 1;
         if (onScreen) hasEnteredScreen = true;

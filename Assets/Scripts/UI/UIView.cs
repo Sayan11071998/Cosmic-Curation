@@ -43,7 +43,6 @@ namespace CosmicCuration.UI
         }
 
         private void OnPlayAgainClicked() => SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-
         private void OnQuitClicked() => Application.Quit();
-    } 
+    }
 }

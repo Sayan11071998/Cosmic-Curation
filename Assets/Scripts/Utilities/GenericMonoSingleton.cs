@@ -10,13 +10,9 @@ namespace CosmicCuration.Utilities
         protected virtual void Awake()
         {
             if (instance == null)
-            {
                 instance = (T)this;
-            }
             else
-            {
                 Destroy(gameObject);
-            }
         }
-    } 
+    }
 }
