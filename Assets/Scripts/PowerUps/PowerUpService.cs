@@ -32,13 +32,8 @@ namespace CosmicCuration.PowerUps
         {
             if (isSpawning)
             {
-                // Select a random powerup type (Shield/RapidFire/DoubleTurret).
                 PowerUpType randomPowerUp = (PowerUpType)UnityEngine.Random.Range(0, Enum.GetValues(typeof(PowerUpType)).Length);
-
-                // Fetch the corresponding PowerUpController
                 PowerUpController powerUp = FetchPowerUp(randomPowerUp);
-
-                // Configure the PowerUp to be spawned.
                 powerUp.Configure(CalculateRandomSpawnPosition());
             }
         }
@@ -62,20 +57,17 @@ namespace CosmicCuration.PowerUps
 
         private Vector2 CalculateRandomSpawnPosition()
         {
-            // Get the boundaries of the visible game screen
             float minX = Camera.main.ViewportToWorldPoint(new Vector3(0, 0, 0)).x;
             float maxX = Camera.main.ViewportToWorldPoint(new Vector3(1, 0, 0)).x;
             float minY = Camera.main.ViewportToWorldPoint(new Vector3(0, 0, 0)).y;
             float maxY = Camera.main.ViewportToWorldPoint(new Vector3(0, 1, 0)).y;
 
-            // Generate random values for X and Y coordinates within the screen boundaries
             float randomX = UnityEngine.Random.Range(minX, maxX);
             float randomY = UnityEngine.Random.Range(minY, maxY);
 
-            // Return the calculated random spawn position
             return new Vector2(randomX, randomY);
         }
 
         public void SetPowerUpSpawning(bool setSpawningActive) => isSpawning = setSpawningActive;
-    } 
+    }
 }

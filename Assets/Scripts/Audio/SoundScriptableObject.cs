@@ -6,5 +6,5 @@ namespace CosmicCuration.Audio
     public class SoundScriptableObject : ScriptableObject
     {
         public Sounds[] audioList;
-    } 
+    }
 }

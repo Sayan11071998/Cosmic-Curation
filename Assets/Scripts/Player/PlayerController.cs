@@ -11,8 +11,7 @@ namespace CosmicCuration.Player
         // Dependencies
         private PlayerView playerView;
         private PlayerScriptableObject playerScriptableObject;
-        private BulletView bulletPrefab;
-        private BulletScriptableObject bulletScriptableObject;
+        private BulletPool bulletPool;
 
         private WeaponMode currentWeaponMode;
         private ShootingState currentShootingState;
@@ -20,14 +19,12 @@ namespace CosmicCuration.Player
         private int currentHealth;
         private float currentRateOfFire;
 
-
-        public PlayerController(PlayerView playerViewPrefab, PlayerScriptableObject playerScriptableObject, BulletView bulletPrefab, BulletScriptableObject bulletScriptableObject)
+        public PlayerController(PlayerView playerViewPrefab, PlayerScriptableObject playerScriptableObject, BulletPool bulletPool)
         {
             playerView = Object.Instantiate(playerViewPrefab);
             playerView.SetController(this);
             this.playerScriptableObject = playerScriptableObject;
-            this.bulletPrefab = bulletPrefab;
-            this.bulletScriptableObject = bulletScriptableObject;
+            this.bulletPool = bulletPool;
 
             InitializeVariables();
         }
@@ -41,6 +38,7 @@ namespace CosmicCuration.Player
             currentShootingState = ShootingState.NotFiring;
             GameService.Instance.GetUIService().UpdateHealthUI(currentHealth);
         }
+
         public void HandlePlayerInput()
         {
             HandlePlayerMovement();
@@ -62,7 +60,6 @@ namespace CosmicCuration.Player
 
         private void HandlePlayerRotation()
         {
-            // Rotate the player to look in the direction of mouse position.
             var dir = Input.mousePosition - Camera.main.WorldToScreenPoint(playerView.transform.position);
             var angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
             playerView.transform.rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);
@@ -96,14 +93,12 @@ namespace CosmicCuration.Player
 
         private void FireBulletAtPosition(Transform fireLocation)
         {
-            BulletController bulletToFire = new BulletController(bulletPrefab, bulletScriptableObject);
+            BulletController bulletToFire = bulletPool.GetBullet();
             bulletToFire.ConfigureBullet(fireLocation);
             GameService.Instance.GetSoundService().PlaySoundEffects(SoundType.PlayerBullet);
         }
         public void SetShieldState(ShieldState shieldStateToSet) => currentShieldState = shieldStateToSet;
-
         public void ToggleDoubleTurret(bool doubleTurretActive) => currentWeaponMode = doubleTurretActive ? WeaponMode.DoubleTurret : WeaponMode.SingleCanon;
-
         public void ToggleRapidFire(bool rapidFireActive) => currentRateOfFire = rapidFireActive ? playerScriptableObject.rapidFireRate : playerScriptableObject.defaultFireRate;
 
         public void TakeDamage(int damageToTake)

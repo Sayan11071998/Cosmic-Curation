@@ -15,5 +15,5 @@ namespace CosmicCuration.VFX
             VFXController vfxToPlay = new VFXController(prefabToSpawn);
             vfxToPlay.Configure(spawnPosition);
         }
-    } 
+    }
 }

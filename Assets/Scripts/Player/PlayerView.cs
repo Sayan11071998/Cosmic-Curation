@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace CosmicCuration.Player
@@ -13,9 +11,7 @@ namespace CosmicCuration.Player
         private PlayerController playerController;
 
         public void SetController(PlayerController playerController) => this.playerController = playerController;
-
         private void Update() => playerController.HandlePlayerInput();
-
         public void TakeDamage(int damageToTake) => playerController.TakeDamage(damageToTake);
-    } 
+    }
 }
