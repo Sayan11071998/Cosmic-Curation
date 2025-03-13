@@ -1,23 +1,19 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using CosmicCuration.Utilities;
-using Unity.VisualScripting;
-using UnityEngine;
 
 namespace CosmicCuration.PowerUps
 {
-    public class PowerupPool : GenericObjectPool<PowerUpController>
+    public class PowerUpPool : GenericObjectPool<IPowerUp>
     {
         private PowerUpData powerUpData;
 
-        public PowerUpController GetPowerUp<T>(PowerUpData powerUpData) where T : PowerUpController
+        public IPowerUp GetPowerUp<T>(PowerUpData powerUpData) where T : IPowerUp
         {
             this.powerUpData = powerUpData;
             return GetItem<T>();
         }
 
-        protected override PowerUpController CreateItem<T>()
+        protected override IPowerUp CreateItem<T>()
         {
             if (typeof(T) == typeof(Shield))
                 return new Shield(powerUpData);
