@@ -1,4 +1,4 @@
-# 🚀 Introducing Cosmic Curation – A Space Battle Adventure! 🌌
+# 🚀 Cosmic Curation – A Space Battle Adventure! 🌌
 
 **Cosmic Curation** is an exhilarating Unity project where you control a spaceship drifting through space, dodging enemy fire, and engaging in intense battles against hostile ships. With exciting power-ups, stunning visual effects, and immersive audio, this game delivers a thrilling arcade-style space adventure!
 
