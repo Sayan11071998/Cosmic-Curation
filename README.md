@@ -61,7 +61,7 @@
 ---
 
 ## 📁 Play Link
-
+https://sayannandi.itch.io/cosmic-curation
 
 [![Watch the video](https://img.youtube.com/vi/okDVSExl-IE/maxresdefault.jpg)](https://youtu.be/okDVSExl-IE)
 ### [Gameplay Video](https://youtu.be/okDVSExl-IE)
